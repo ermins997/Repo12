@@ -23,15 +23,17 @@ var collection = {
   
   function updateRecords(object, id, prop, value) {
     // Only change code below this line
-    if (prop != "tracks" && value != "") {
-      object[id][prop] = value;
-    } else if (prop == "tracks" && !object[id].hasOwnProperty("tracks")) {
-      newProp = [];
-      object[id][prop] = [];
-      object[id][prop].push(value);
-    } else if (prop == "tracks" && value != "") {
-      object[id][prop].push(value);
-    }
+      if (prop != "tracks" && value != "") {
+        object[id][prop] = value;
+      } else if (prop == "tracks" && !object[id].hasOwnProperty("tracks")) {
+        newProp = [];
+        object[id][prop] = [];
+        object[id][prop].push(value);
+      } else if (prop == "tracks" && value != "") {
+        object[id][prop].push(value);
+      } else if (value === ''){
+        delete object[id][prop];
+      }
   
     return object;
     // Only change code above this line
